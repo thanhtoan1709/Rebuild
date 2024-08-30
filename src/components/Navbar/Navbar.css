@@ -1,0 +1,62 @@
+.nav-wrapper {
+    color: #000;
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    backdrop-filter: blur(50px);
+}
+.nav-content {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 21px;
+    padding: 1rem 1.2rem;
+    margin: 0 auto;
+}
+.nav-content a {
+    text-decoration: none;
+    margin-left: 1rem;
+    color: #000;
+}
+.nav-content .logo-menu a:hover {
+   color: rgb(255, 158, 158);
+}
+.nav-content .logo-menu {
+    display: flex;
+    gap: 1rem ;
+    align-items: center;
+    text-align: left;
+}
+.nav-content .nav-menu {
+    gap:10px
+}
+.nav-content .search-cart a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    font-size: 2rem;
+    margin: 30px 15px 30px 0;
+    border-radius: 60%;
+    color: rgba(15, 15, 15, 0.471);
+}
+.nav-content .search-cart a:hover { 
+    background: rgb(0, 0, 0);
+    color: #fff;
+    box-shadow: 0 0 20px rgb(153, 0, 255);
+}
+.nav-content .nav-menu ul {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-content .nav-menu a {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.6rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
