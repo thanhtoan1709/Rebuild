@@ -10,7 +10,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <Sidebar />
+      <div className="d-none d-lg-block">
+        <Sidebar />
+      </div>
       <Routes>
         {/* <Route path="/" element={<LoginForm />} />
         <Route path="/login-success" element={<LoginSuccess />} />

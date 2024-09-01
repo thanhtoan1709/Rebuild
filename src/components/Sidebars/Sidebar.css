@@ -1,0 +1,153 @@
+/* Sidebar.css */
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .search-box {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search-box input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .search-box button {
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .search-box button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Accordion specific styles */
+  .filter-section {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .filter-section h3 {
+    background-color: #f7f7f7;
+    padding: 15px;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .filter-section.active h3 {
+    background-color: #e7e7e7;
+  }
+  
+  .filter-section h3 .accordion-header-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .filter-section.active h3 .accordion-header-icon {
+    transform: rotate(180deg);
+  }
+  
+  .filter-content {
+    display: none;
+    padding: 15px;
+    background-color: #fff;
+  }
+  
+  .filter-section.active .filter-content {
+    display: block;
+  }
+
+  
+  .filter-section label input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  .filter-section label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-section label span {
+    font-size: 14px;
+  }
+
+/*  */
+ /* Common styles for all color options */
+.color-option {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+    position: relative;
+  }
+  
+  /* Color specific styles */
+  .color-option.white {
+    background-color: white;
+  
+  }
+  
+  .color-option.red {
+    background-color: red;
+ 
+  }
+  
+  .color-option.purple {
+    background-color: purple;
+
+  }
+  
+  .color-option.yellow {
+    background-color: yellow;
+
+  }
+  
+  .color-option.black {
+    background-color: black;
+    
+  }
+  
+  .color-option.gray {
+    background-color: gray;
+  
+  }
+  
+  .color-option.blue {
+    background-color: blue;
+   
+  }
+  
+  input[type="checkbox"]:checked + .color-option {
+    border: 2px solid #000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+    position: relative;
+  }
+  
+  input[type="checkbox"]:checked + .color-option::after {
+    content: '✔'; /* Biểu tượng checkmark */
+    color: black;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
