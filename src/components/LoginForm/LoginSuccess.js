@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { loginSuccess } from '../store/actions';
-import { useParams, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { loginSuccess } from "../../store/actions";
+import { useParams, Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 const LoginSuccess = () => {
   const dispath = useDispatch();
 
@@ -11,7 +11,7 @@ const LoginSuccess = () => {
     dispath(loginSuccess(userID));
   }, []);
 
-  return <div>{isLoggedIn && <Navigate to={'/admin'} replace={true} />}</div>;
+  return <div>{isLoggedIn && <Navigate to={"/home"} replace={true} />}</div>;
 };
 
 export default LoginSuccess;

@@ -1,21 +1,20 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
-import './LoginForm.css';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
-import logoBanner from './asset/bg-logo-banner.jpg';
-import { useDispatch } from 'react-redux';
-import { loginSubmit } from '../store/actions';
+import React, { useState } from "react";
+import "./LoginForm.css";
+import { Link, useNavigate } from "react-router-dom";
+import logoBanner from "./asset/bg-logo-banner.jpg";
+import { useDispatch } from "react-redux";
+import { loginSubmit } from "../../store/actions";
 
 function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handelGoogle = () => {
-    window.open('http://localhost:5000/api/v1/auth/google', '_self');
+    window.open("http://localhost:5000/api/v1/auth/google", "_self");
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -32,11 +31,11 @@ function LoginForm() {
     try {
       await dispatch(loginSubmit(email, password));
       // Nếu đăng nhập thành công, điều hướng đến trang dashboard
-      navigate('/admin');
+      navigate("/home");
     } catch (error) {
       // Xử lý lỗi nếu có
-      alert('Không tìm thấy người dùng');
-      console.error('Đăng nhập không thành công:', error);
+      alert("Không tìm thấy người dùng");
+      console.error("Đăng nhập không thành công:", error);
     }
   };
   return (
@@ -97,11 +96,16 @@ function LoginForm() {
               </div>
               <div className="label-hoac text-center mt-3">hoặc</div>
               <div className="button-method-loggin d-flex flex-column justify-content-center align-items-center mt-3">
-                <button className="btn btn-outline-danger w-100 mb-2" onClick={handelGoogle}>
+                <button
+                  className="btn btn-outline-danger w-100 mb-2"
+                  onClick={handelGoogle}
+                >
                   Google
                 </button>
                 <button className="btn btn-outline-dark w-100 mb-2">X</button>
-                <button className="btn btn-outline-primary w-100">Facebook</button>
+                <button className="btn btn-outline-primary w-100">
+                  Facebook
+                </button>
               </div>
             </div>
           </div>
