@@ -1,3 +1,4 @@
+import actionTypes from "./../actions/actionType";
 const initState = {
   userData: {},
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import logo from "../../assets/bg-web.png";
 import MobileNav from "./mobileNav/mobileNavbar";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   // const [openMenu, setOpenmenu] = useState(false);
@@ -22,30 +23,32 @@ const Navbar = () => {
         <div className="nav-content">
           <div className="logo-menu">
             <div className="nav-logo">
-              <img src={logo} alt="Logo" />
+              <NavLink to="/">
+                <img src={logo} alt="Logo" />
+              </NavLink>
             </div>
             <div className="nav-menu">
               <ul className="menu-header">
                 <li>
-                  <a href="#qweqweqsa">Collections</a>
+                  <NavLink to="/Collections">Collections</NavLink>
                 </li>
                 <li>
-                  <a href="#qweqweq">Top</a>
+                  <NavLink to="/Top">Top</NavLink>
                 </li>
                 <li>
-                  <a href="#qweqweq">Bottom</a>
+                  <NavLink to="/Bottom">Bottom</NavLink>
                 </li>
                 <li>
-                  <a href="#qweqweq">Accessories</a>
+                  <NavLink to="/Acs">Accessories</NavLink>
                 </li>
                 <li>
-                  <a href="#qweqweq">Outerwear</a>
+                  <NavLink to="/Outerwear">Outerwear</NavLink>
                 </li>
                 <li>
-                  <a href="#qweqweq">Handbag</a>
+                  <NavLink to="/Handbag">Handbag</NavLink>
                 </li>
                 <li>
-                  <a href="#qweqweq">Sale</a>
+                  <NavLink to="/Sale">Sale</NavLink>
                 </li>
               </ul>
             </div>
