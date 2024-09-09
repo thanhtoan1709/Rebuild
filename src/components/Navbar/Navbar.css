@@ -6,13 +6,19 @@
     z-index: 30;
     backdrop-filter: blur(50px);
 }
+
+  
+  .nav-wrapper:hover {
+    background-color: white; /* Hiển thị nền trắng khi hover */
+  }
+  
 .nav-content {
     background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
     line-height: 21px;
-    padding: 1rem 1.2rem;
+    padding: 0.5rem 0.5rem;
     margin: 0 auto;
 }
 .nav-content a {

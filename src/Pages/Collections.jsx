@@ -1,24 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-
-const Collections = () => {
+import Sidebar from "../components/Sidebars/Sidebar";
+import Products from "./../components/Product/Products";
+const Home = () => {
   return (
     <div>
-      {" "}
-      {/* breadcumb*/}
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Collections
-          </li>
-        </ol>
-      </nav>
-      {/* breadcrumb end */}
+      <div className="container-fluid">
+        <div className="row d-flex">
+          <div className="col-md-2">
+            <Sidebar />
+          </div>
+          <div className="col-md-10">
+            <Products />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Collections;
+export default Home;

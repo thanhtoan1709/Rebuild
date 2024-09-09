@@ -151,3 +151,16 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  @media (max-width: 768px) {
+    .sidebar {
+      display: none;
+    }
+    .ProductMain .Product-all {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem; /* Khoảng cách giữa các sản phẩm */
+        justify-content: center; /* Căn giữa các cột */
+        width: 100%; /* Đảm bảo grid chiếm toàn bộ chiều rộng */
+        max-width: 768px; /* Chiều rộng tối đa cho grid (tùy chọn) */
+    }
+}
