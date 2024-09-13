@@ -3,7 +3,7 @@ import "./Navbar.css";
 import logo from "../../assets/bg-web.png";
 import MobileNav from "./mobileNav/mobileNavbar";
 import { NavLink } from "react-router-dom";
-
+import ToggleMenu from "./Menudesktop/ToggleMenu";
 const Navbar = () => {
   // const [openMenu, setOpenmenu] = useState(false);
   // const toggleMenu = () => {
@@ -11,7 +11,6 @@ const Navbar = () => {
   // };
 
   const [openMenu, setOpenMenu] = useState(false);
-
   const toggleMenu = () => {
     setOpenMenu((prevState) => !prevState);
   };
@@ -19,6 +18,7 @@ const Navbar = () => {
   return (
     <div>
       <MobileNav isOpen={openMenu} toggleMenu={toggleMenu} />
+      <ToggleMenu isOpen={openMenu} toggleMenu={toggleMenu} />
       <nav className="nav-wrapper">
         <div className="nav-content">
           <div className="logo-menu">
@@ -60,7 +60,7 @@ const Navbar = () => {
             <button href="#cart">
               <i className="bx bx-cart"></i>
             </button>
-            <button href="#menu" onClick={toggleMenu}>
+            <button className="menu-home" href="#menu" onClick={toggleMenu}>
               <i className="material-symbols-outlined">
                 {openMenu ? "close" : "menu"}
               </i>

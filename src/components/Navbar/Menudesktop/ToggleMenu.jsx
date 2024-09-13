@@ -1,15 +1,15 @@
 import React from "react";
-import "./mobileNavbar.css";
-import logo from "../../../assets/bg-web.png";
 import { NavLink } from "react-router-dom";
-const mobileNavbar = ({ isOpen, toggleMenu }) => {
+import logo from "../../../assets/bg-web.png";
+import "./HomeMenu.css";
+const ToggleMenu = ({ isOpen, toggleMenu }) => {
   return (
-    <>
+    <div>
       <div
-        className={`mobile-menu ${isOpen ? "active" : ""}`}
+        className={`desktop-menu ${isOpen ? "active" : ""}`}
         onClick={toggleMenu}
       >
-        <div className="mobile-menu-container">
+        <div className="desktop-menu-container">
           <div className="nav-logo">
             <img src={logo} alt="Logo" />
           </div>
@@ -44,8 +44,8 @@ const mobileNavbar = ({ isOpen, toggleMenu }) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default mobileNavbar;
+export default ToggleMenu;

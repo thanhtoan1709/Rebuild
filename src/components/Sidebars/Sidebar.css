@@ -164,3 +164,8 @@
         max-width: 768px; /* Chiều rộng tối đa cho grid (tùy chọn) */
     }
 }
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .sidebar {
+    display: none;
+  }
+}
