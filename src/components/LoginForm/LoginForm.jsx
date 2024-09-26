@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from "react";
 import "./LoginForm.css";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import logoBanner from "./asset/bg-logo-banner.jpg";
 import { useDispatch } from "react-redux";
-import { loginSubmit } from "../../store/actions";
+import { loginSubmit } from "../store/actions";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,17 +31,12 @@ function LoginForm() {
 
     // Gọi action creator loginSubmit từ Redux store để xử lý đăng nhập
     try {
-      const result = await dispatch(loginSubmit(email, password));
-      if (result.error) {
-        // Nếu có lỗi từ action creator, cập nhật thông báo lỗi
-        setErrorMessage(result.error);
-      } else {
-        // Nếu đăng nhập thành công, điều hướng đến trang dashboard
-        navigate("/");
-      }
+      await dispatch(loginSubmit(email, password));
+      // Nếu đăng nhập thành công, điều hướng đến trang dashboard
+      navigate("/admin");
     } catch (error) {
       // Xử lý lỗi nếu có
-      setErrorMessage("Đã xảy ra lỗi trong quá trình đăng nhập.");
+      alert("Không tìm thấy người dùng");
       console.error("Đăng nhập không thành công:", error);
     }
   };
