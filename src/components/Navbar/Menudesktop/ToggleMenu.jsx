@@ -6,14 +6,13 @@ import { IconButton, Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
 
 import UserComponent from "../../User/UserComponent";
 import { cartItemsCountSelector } from "../../cart/selector";
+import { useSelector } from "react-redux";
 
-const ToggleMenu = ({ isOpen, toggleMenu }) => {
+const ToggleMenu = ({ isOpen, toggleMenu, isLoggedIn }) => {
   const cartItemsCount = useSelector(cartItemsCountSelector);
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   return (
     <div>
       <div

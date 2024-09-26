@@ -17,6 +17,8 @@ const Navbar = () => {
   //   setOpenmenu(!openMenu);
   // };
   const cartItemsCount = useSelector(cartItemsCountSelector);
+
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const navigate = useNavigate();
   const buttonCheckCart = () => {
     return navigate("/cart");
@@ -32,8 +34,14 @@ const Navbar = () => {
         isOpen={openMenu}
         toggleMenu={toggleMenu}
         cartItemsCount={cartItemsCount}
+        isLoggedIn={isLoggedIn}
       />
-      <ToggleMenu isOpen={openMenu} toggleMenu={toggleMenu} />
+      <ToggleMenu
+        isOpen={openMenu}
+        toggleMenu={toggleMenu}
+        cartItemsCount={cartItemsCount}
+        isLoggedIn={isLoggedIn}
+      />
       <nav className="nav-wrapper">
         <div className="nav-content">
           <div className="logo-menu">

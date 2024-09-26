@@ -7,10 +7,9 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSelector } from "react-redux";
-
 import UserComponent from "../../User/UserComponent";
 import { cartItemsCountSelector } from "../../cart/selector";
-const mobileNavbar = ({ isOpen, toggleMenu, cartItemsCount }) => {
+const mobileNavbar = ({ isOpen, toggleMenu, cartItemsCount, isLoggedIn }) => {
   return (
     <>
       <div
@@ -57,8 +56,10 @@ const mobileNavbar = ({ isOpen, toggleMenu, cartItemsCount }) => {
           </ul>
           <div className="login-signup-member">
             <div>
-              <NavLink to="/Login">Login</NavLink>
-              <NavLink to="/Signup">SignUp</NavLink>
+              <UserComponent />
+              {!isLoggedIn && ( // Hiển thị Register chỉ khi người dùng chưa đăng nhập
+                <NavLink to="/register">Register</NavLink>
+              )}
             </div>
           </div>
         </div>

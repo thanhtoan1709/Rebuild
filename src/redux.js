@@ -52,8 +52,8 @@ const persistedAuthReducer = persistReducer(authConfig, authReducer);
 const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    user: userReducer,
     cart: cartReducer,
+    user: userReducer,
     product: productReducer,
   },
 });

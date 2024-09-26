@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const UserComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const token = useSelector((state) => state.auth.token);
 
@@ -20,10 +19,7 @@ const UserComponent = () => {
         const data = await apiGetOne(token);
         setUserData(data);
       } catch (error) {
-        if (error.response && error.response.status === 401) {
-          dispatch(logOut());
-          navigate("/login");
-        }
+        console.log("Error fetching user data:", error);
       }
     };
 

@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import logoBanner from "./asset/bg-logo-banner.jpg";
 import { useDispatch } from "react-redux";
-import { loginSubmit } from "../store/actions";
+import { loginSubmit } from "../../store/actions/authAction";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -32,10 +32,9 @@ function LoginForm() {
     // Gọi action creator loginSubmit từ Redux store để xử lý đăng nhập
     try {
       await dispatch(loginSubmit(email, password));
-      // Nếu đăng nhập thành công, điều hướng đến trang dashboard
-      navigate("/admin");
+
+      navigate("/");
     } catch (error) {
-      // Xử lý lỗi nếu có
       alert("Không tìm thấy người dùng");
       console.error("Đăng nhập không thành công:", error);
     }
