@@ -2,7 +2,15 @@ import React from "react";
 import "./mobileNavbar.css";
 import logo from "../../../assets/bg-web.png";
 import { NavLink } from "react-router-dom";
-const mobileNavbar = ({ isOpen, toggleMenu }) => {
+import { IconButton, Badge } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
+
+import UserComponent from "../../User/UserComponent";
+import { cartItemsCountSelector } from "../../cart/selector";
+const mobileNavbar = ({ isOpen, toggleMenu, cartItemsCount }) => {
   return (
     <>
       <div
@@ -14,6 +22,17 @@ const mobileNavbar = ({ isOpen, toggleMenu }) => {
             <img src={logo} alt="Logo" />
           </div>
           <ul className="menu-header">
+            <li>
+              <IconButton
+                size="large"
+                aria-label="show 4 new product"
+                color="inherit"
+              >
+                <Badge badgeContent={cartItemsCount} color="error">
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+            </li>
             <li>
               <NavLink to="/Collections">Collections</NavLink>
             </li>

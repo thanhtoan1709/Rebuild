@@ -1,22 +1,39 @@
-import { apiGetProduct } from "../../components/api/productsServices";
+import {
+  apiFetchProducts,
+  apiFetchOneProduct,
+} from "../../components/api/productsServices";
 
 import actionTypes from "./actionType";
-export const getProduct = (skip, limit) => async (dispatch) => {
-  try {
-    const response = await apiGetProduct({ skip, limit });
 
-    if (response?.data.err === 0) {
-      // Nếu đăng nhập thành công, dispatch action LOGIN_SUBMIT để cập nhật trạng thái trong Redux store
-      dispatch({
-        type: actionTypes.GET_PRODUCT,
-        data: response?.data.token,
-      });
-    } else {
-      // Đăng nhập thất bại, có thể xử lý thông báo lỗi ở đây
-      console.error("Lấy dữ liệuu không thành công");
-    }
+export const fetchProducts = (page) => async (dispatch) => {
+  dispatch({ type: actionTypes.FETCH_PRODUCTS_REQUEST });
+
+  try {
+    const data = await apiFetchProducts(page);
+    dispatch({
+      type: actionTypes.FETCH_PRODUCTS_SUCCESS,
+      payload: { products: data.products, totalPages: data.totalPages },
+    });
   } catch (error) {
-    // Xử lý lỗi nếu có
-    console.error("Đã xảy ra lỗi khi gọi API GET_PRODUCT:", error);
+    dispatch({
+      type: actionTypes.FETCH_PRODUCTS_FAILURE,
+      payload: error.message,
+    });
+  }
+};
+export const fetchOneProduct = (id_pr) => async (dispatch) => {
+  dispatch({ type: actionTypes.FETCH_ONE_PRODUCT_REQUEST });
+
+  try {
+    const data = await apiFetchOneProduct(id_pr);
+    dispatch({
+      type: actionTypes.FETCH_ONE_PRODUCT_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: actionTypes.FETCH_ONE_PRODUCT_FAILURE,
+      payload: error.message,
+    });
   }
 };

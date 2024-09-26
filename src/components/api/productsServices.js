@@ -1,15 +1,26 @@
 import axios from "axios";
 
-export const apiGetProduct = async ({ skip, limit }) => {
+// productServices.js
+export const apiFetchOneProduct = async (id_pr) => {
   try {
-    const response = await axios({
-      method: "post",
-      url: "http://localhost:5000/api/v1/product",
-      data: { skip, limit },
-    });
-    console.log(response);
-    return response; // Giải quyết Promise và trả về response
+    const response = await axios.get(
+      `http://localhost:5000/api/v1/product/${id_pr}`
+    );
+    return response.data; // Trả về data của sản phẩm
   } catch (error) {
-    throw error; // Ném lỗi để bắt ở nơi gọi hàm
+    console.error("Error fetching product:", error);
+    throw error;
+  }
+};
+
+export const apiFetchProducts = async (page) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:5000/api/v1/product?page=${page}`
+    );
+    return response.data; // Chỉ trả về data
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
   }
 };

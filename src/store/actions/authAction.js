@@ -10,7 +10,9 @@ export const loginSuccess = (id) => async (dispath) => {
     if (response?.data.err === 0) {
       dispath({
         type: actionTypes.LOGIN_SUCESS,
-        data: response?.data.token,
+        data: response.data["access token"], // Lưu token vào Redux
+        username: response.data.username || null, // Nếu có, không có thì để null
+        avatar: response.data.avatar || null, // Nếu có, không có thì để null
       });
     } else {
       dispath({
@@ -29,15 +31,19 @@ export const loginSubmit = (email, password) => async (dispatch) => {
   try {
     const response = await apiloginSubmit(email, password);
 
-    if (response?.data.err === 0) {
+    // Kiểm tra nếu response.data tồn tại và có thuộc tính err
+    if (response?.data?.err === 0) {
       // Nếu đăng nhập thành công, dispatch action LOGIN_SUBMIT để cập nhật trạng thái trong Redux store
       dispatch({
         type: actionTypes.LOGIN_SUBMIT,
-        data: response?.data.token,
+        data: response.data["access token"], // Lưu token vào Redux
+        username: response.data.username || null, // Nếu có, không có thì để null
+        avatar: response.data.avatar || null, // Nếu có, không có thì để null
       });
+      return response;
     } else {
-      // Đăng nhập thất bại, có thể xử lý thông báo lỗi ở đây
-      console.error("Đăng nhập không thành công");
+      // Đăng nhập thất bại, xử lý thông báo lỗi
+      console.error("Đăng nhập không thành công:", response?.data?.mess);
     }
   } catch (error) {
     // Xử lý lỗi nếu có

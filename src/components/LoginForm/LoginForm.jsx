@@ -9,7 +9,8 @@ import { loginSubmit } from "../../store/actions";
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -26,15 +27,21 @@ function LoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(""); // Reset thông báo lỗi trước khi gửi yêu cầu
 
     // Gọi action creator loginSubmit từ Redux store để xử lý đăng nhập
     try {
-      await dispatch(loginSubmit(email, password));
-      // Nếu đăng nhập thành công, điều hướng đến trang dashboard
-      navigate("/home");
+      const result = await dispatch(loginSubmit(email, password));
+      if (result.error) {
+        // Nếu có lỗi từ action creator, cập nhật thông báo lỗi
+        setErrorMessage(result.error);
+      } else {
+        // Nếu đăng nhập thành công, điều hướng đến trang dashboard
+        navigate("/");
+      }
     } catch (error) {
       // Xử lý lỗi nếu có
-      alert("Không tìm thấy người dùng");
+      setErrorMessage("Đã xảy ra lỗi trong quá trình đăng nhập.");
       console.error("Đăng nhập không thành công:", error);
     }
   };

@@ -13,6 +13,9 @@ import Top from "./Pages/Top";
 import HandBag from "./Pages/Handbag";
 import Sale from "./Pages/Sale";
 import Collections from "./Pages/Collections";
+import ProductDetail from "./components/Product/ProductDetail";
+import Cart from "./components/cart/Cart";
+import Register from "./components/Register/Register";
 function App() {
   return (
     <>
@@ -26,10 +29,12 @@ function App() {
         <Route path="/Top" element={<Top />} />
         <Route path="/HandBag" element={<HandBag />} />
         <Route path="/Footer" element={<Footer />} />
-        {/* <Route path="/products/:id" element={<Product />} /> */}
+        <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login-success" element={<LoginSuccess />} />
         <Route path="/login-success/:userID" element={<LoginSuccess />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </>
   );

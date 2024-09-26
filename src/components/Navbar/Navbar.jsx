@@ -2,14 +2,25 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import logo from "../../assets/bg-web.png";
 import MobileNav from "./mobileNav/mobileNavbar";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { IconButton, Badge } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import ToggleMenu from "./Menudesktop/ToggleMenu";
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
+import { cartItemsCountSelector } from "../cart/selector";
 const Navbar = () => {
   // const [openMenu, setOpenmenu] = useState(false);
   // const toggleMenu = () => {
   //   setOpenmenu(!openMenu);
   // };
-
+  const cartItemsCount = useSelector(cartItemsCountSelector);
+  const navigate = useNavigate();
+  const buttonCheckCart = () => {
+    return navigate("/cart");
+  };
   const [openMenu, setOpenMenu] = useState(false);
   const toggleMenu = () => {
     setOpenMenu((prevState) => !prevState);
@@ -17,7 +28,11 @@ const Navbar = () => {
 
   return (
     <div>
-      <MobileNav isOpen={openMenu} toggleMenu={toggleMenu} />
+      <MobileNav
+        isOpen={openMenu}
+        toggleMenu={toggleMenu}
+        cartItemsCount={cartItemsCount}
+      />
       <ToggleMenu isOpen={openMenu} toggleMenu={toggleMenu} />
       <nav className="nav-wrapper">
         <div className="nav-content">
@@ -54,18 +69,44 @@ const Navbar = () => {
             </div>
           </div>
           <div className="search-cart">
-            <button href="#search">
-              <i className="bx bx-search"></i>
-            </button>
-            <button href="#cart">
-              <i className="bx bx-cart"></i>
-            </button>
-            <button className="menu-home" href="#menu" onClick={toggleMenu}>
+            <IconButton size="large" aria-label="search" color="inherit">
+              <SearchIcon />
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <IconButton
+              onClick={buttonCheckCart}
+              size="large"
+              aria-label="show 4 new product"
+              color="inherit"
+            >
+              <Badge badgeContent={cartItemsCount} color="error">
+                <ShoppingCartIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              className="menu-home"
+              onClick={toggleMenu}
+              size="large"
+              aria-label="show 4 new product"
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            {/* <button className="menu-home" href="#menu" onClick={toggleMenu}>
               <i className="material-symbols-outlined">
                 {openMenu ? "close" : "menu"}
               </i>
-            </button>
+            </button> */}
           </div>
+
           {/* nav-mobile */}
           <button className="btn-menu" onClick={toggleMenu}>
             <i className="material-symbols-outlined">

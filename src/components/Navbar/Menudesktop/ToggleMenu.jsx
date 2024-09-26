@@ -2,7 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../../assets/bg-web.png";
 import "./HomeMenu.css";
+import { IconButton, Badge } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
+
+import UserComponent from "../../User/UserComponent";
+import { cartItemsCountSelector } from "../../cart/selector";
+
 const ToggleMenu = ({ isOpen, toggleMenu }) => {
+  const cartItemsCount = useSelector(cartItemsCountSelector);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   return (
     <div>
       <div
@@ -13,6 +24,7 @@ const ToggleMenu = ({ isOpen, toggleMenu }) => {
           <div className="nav-logo">
             <img src={logo} alt="Logo" />
           </div>
+
           <ul className="menu-header">
             <li>
               <NavLink to="/Collections">Collections</NavLink>
@@ -38,8 +50,10 @@ const ToggleMenu = ({ isOpen, toggleMenu }) => {
           </ul>
           <div className="login-signup-member">
             <div>
-              <NavLink to="/Login">Login</NavLink>
-              <NavLink to="/Signup">SignUp</NavLink>
+              <UserComponent />
+              {!isLoggedIn && ( // Hiển thị Register chỉ khi người dùng chưa đăng nhập
+                <NavLink to="/register">Register</NavLink>
+              )}
             </div>
           </div>
         </div>

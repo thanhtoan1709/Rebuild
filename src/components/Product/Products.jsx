@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Pagination } from "@mui/material";
 import "./Products.css";
+
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
   const nextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
@@ -18,10 +21,8 @@ const Products = () => {
     }
   };
 
-  const [error, setError] = useState(null);
   const fetchProducts = async (page) => {
     try {
-      // setLoading(true);
       const response = await axios.get(
         `http://localhost:5000/api/v1/product?page=${page}`
       );
@@ -32,16 +33,18 @@ const Products = () => {
       } else {
         throw new Error("Expected an array of products");
       }
-      // setLoading(false);
     } catch (error) {
-      setError(error);
       console.error("Error fetching products:", error);
-      // setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchProducts(currentPage);
   }, [currentPage]);
+
+  const handleChange = (event, value) => {
+    setCurrentPage(value);
+  };
 
   return (
     <div>
@@ -71,23 +74,19 @@ const Products = () => {
             ))}
           </div>
         </div>
+
         {/* Phantrang */}
         <div className="page-nation">
-          <button onClick={prevPage} disabled={currentPage === 1}>
-            &lt;
-          </button>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index + 1}
-              onClick={() => setCurrentPage(index + 1)}
-              className={currentPage === index + 1 ? "active" : ""}
-            >
-              {index + 1}
-            </button>
-          ))}
-          <button onClick={nextPage} disabled={currentPage === totalPages}>
-            &gt;
-          </button>
+          <Pagination
+            color="primary"
+            count={totalPages}
+            page={currentPage}
+            onChange={handleChange}
+            variant="outlined"
+            shape="rounded"
+            siblingCount={10} // Số lượng trang hiển thị bên cạnh trang hiện tại
+            boundaryCount={5} // Số lượng trang hiển thị ở đầu và cuối
+          />
         </div>
       </div>
     </div>

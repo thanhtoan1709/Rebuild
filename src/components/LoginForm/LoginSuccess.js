@@ -11,7 +11,7 @@ const LoginSuccess = () => {
     dispath(loginSuccess(userID));
   }, []);
 
-  return <div>{isLoggedIn && <Navigate to={"/home"} replace={true} />}</div>;
+  return <div>{isLoggedIn && <Navigate to={"/"} replace={true} />}</div>;
 };
 
 export default LoginSuccess;
