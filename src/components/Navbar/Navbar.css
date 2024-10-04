@@ -1,0 +1,100 @@
+.nav-wrapper {
+    color: #000;
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    backdrop-filter: blur(50px);
+}
+
+  
+  .nav-wrapper:hover {
+    background-color: white; /* Hiển thị nền trắng khi hover */
+  }
+  
+.nav-content {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 21px;
+    padding: 0.5rem 0.5rem;
+    margin: 0 auto;
+}
+.nav-content a {
+    text-decoration: none;
+    margin-left: 1rem;
+    color: #000;
+}
+.nav-content .logo-menu a:hover {
+   color: rgb(255, 158, 158);
+}
+.nav-content .logo-menu {
+    display: flex;
+    gap: 1rem ;
+    align-items: center;
+    text-align: left;
+}
+.nav-content .nav-menu {
+    gap:10px
+}
+.nav-content .search-cart button:hover { 
+    background: rgb(0, 0, 0);
+    color: #fff;
+    box-shadow: 0 0 20px rgb(153, 0, 255);
+    
+}
+.nav-content .nav-menu ul {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    list-style: none;
+}
+.nav-content .nav-menu a {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.6rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.btn-menu {
+    width: 2.5rem;
+    height: 2rem;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 0.4rem;
+    background: linear-gradient(90deg,#a993fe -0.13% , #7e61e7 99,87%);
+    line-height: 0;
+    transition: all 0.4s ease;
+    display: none;
+}
+
+.btn-menu:hover {
+    background: #000;
+    color: #a993fe;
+    border: 1px solid #a993fe;
+}
+@media (max-width: 769px) {
+    .btn-menu {
+        display: block;
+    }
+    .nav-content .logo-menu ul{
+        display: none;
+    }
+    .nav-content .search-cart {
+        display: none;
+    }
+}
+@media (max-width: 1325px) {
+    .btn-menu {
+        display: block;
+    }
+    .nav-content .logo-menu ul{
+        display: none;
+    }
+    .nav-content .search-cart {
+        display: none;
+    }
+}   

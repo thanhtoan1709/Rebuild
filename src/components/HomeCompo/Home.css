@@ -1,0 +1,14 @@
+.main-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .main-banner img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px; /* Điều chỉnh khoảng cách dưới ảnh */
+  }
+  
