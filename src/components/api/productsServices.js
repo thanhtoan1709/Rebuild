@@ -18,7 +18,8 @@ export const apiFetchProducts = async (page) => {
     const response = await axios.get(
       `http://localhost:5000/api/v1/product?page=${page}`
     );
-    return response.response; // Chỉ trả về data
+
+    return response.data; // Chỉ trả về data
   } catch (error) {
     console.error("Error fetching products:", error);
     throw error;

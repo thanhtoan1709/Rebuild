@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
     min-height: 100vh; 
     margin: 0; 
     padding: 0 10px; 
@@ -77,6 +78,7 @@ text-align:center;
     }
 }
 @media (min-width: 1024px) and (max-width: 1280px) {
+
     .ProductMain .Product-all .product-item{
         display: flex;
         margin-left: 0.2rem;

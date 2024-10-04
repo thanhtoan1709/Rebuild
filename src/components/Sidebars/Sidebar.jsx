@@ -27,6 +27,7 @@ const Sidebar = () => {
         <button onClick={handleReset}>Reset</button>
         <button onClick={handleApplyFilters}>Apply</button>
       </div>
+
       <ComponentGowhere />
       <ComponentStyle />
       <ComponentEvent />
